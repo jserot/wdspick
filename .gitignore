@@ -1,0 +1,13 @@
+/HOWTO.txt
+/config
+src/moc_*.cpp
+src/object_script.*.*
+src/release/
+src/debug/
+src/wdspick.app/
+src/Makefile
+src/Makefile.*
+icon.graffle/
+*.ico
+*.bmp
+*.dll
