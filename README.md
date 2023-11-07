@@ -30,8 +30,8 @@ The project web page (including links for downloading the tools) is
 The user manual can be found
 [here](http://www.astrosurf.com/legalet/software/wdspick/WdsPick-manual.pdf).
 
-A short paper describing **WdsPick** was published in the [Journal of Double Star
-Observations](http://jdso.org), vol 12(6), pp 535--540.
+A short [paper](http://www.jdso.org/volume12/number6/Serot_535_540.pdf) describing **WdsPick** was published in the [Journal of Double Star
+Observations](http://jdso.org).
 
 INSTALLATION
 ------------
