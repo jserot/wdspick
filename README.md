@@ -35,4 +35,4 @@ INSTALLATION
 
 Prebuilt Windows and MacOS versions can be downloaded from the [project
 webpage](http://www.astrosurf.com/legalet/Astro/WdsPIck.html)
-or from the _Release_ section of this repo.
+or from the [releases](https://github.com/jserot/wdspick/releases_Release) section of this repo.
