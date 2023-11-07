@@ -52,11 +52,5 @@ QTextStream& operator<<(QTextStream& os, const WdsEntry &v)
 {
   QString s = v.toString();
   os << s;
-//   os << v.wds << " " << v.disc << v.comp 
-//      << "nobs=" <<  v.nb_obs << " last=" << v.last_obs 
-//      << " m1=" << v.m1 << " m2=" << v.m2
-//      << " sep=" << v.sep << " pa=" << v.pa
-//      << " ra=" << v.ra << " dec=" << v.dec
-//      << " notes=" << v.notes;
   return os;
 }

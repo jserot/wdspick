@@ -1,5 +1,8 @@
 /HOWTO.txt
+/CHANGELOG.txt
+/README.txt
 /config
+src/moc_*.h
 src/moc_*.cpp
 src/object_script.*.*
 src/release/

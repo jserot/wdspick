@@ -107,14 +107,6 @@ void WdsExtractor::read_wds_file(WdsPickContext *ctx, WdsFilter &filt, QVector<W
    progress.setLabelText(tr("Scanning %1").arg(ctx->wds->fileName()));
    progress.setRange(1,ctx->wds_count);
    progress.setModal(true);
-   //status_bar->showMessage(tr("Reading WDS file..."));
-//    QProgressBar *progress = new QProgressBar(this);
-//    status_bar->addWidget(progress);
-//    //progress->setLabelText(tr("Reading %1").arg(ctx->wds->fileName()));
-//    progress->setRange(1,ctx->wds_count);
-//    progress->setVisible(true);
-//    progress->setTextVisible(true);
-//    progress->setValue(1);
    int k = 0;
    QTextStream is(ctx->wds);
    ctx->wds->seek(0);

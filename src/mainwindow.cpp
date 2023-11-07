@@ -85,7 +85,7 @@ void MainWindow::extract()
 
 static QString aboutTxt = QMessageBox::tr(
 "<center><h3>WdsPick version 2.2</h3></center>"
-"<center>(c) Jocelyn Serot, 2018</center>"
+"<center>(c) Jocelyn Serot, 2018-now</center>"
 "<center><code>jocelyn.serot@free.fr</code></center>"
 "<center><a href=\"http://www.astrosurf.com/legalet/Astro/WdsPIck\">www.astrosurf.com/legalet/Astro/WdsPIck</a></center>"
 "<p>WdsPick is mailware : if you find it useful, find bugs or have suggestions for improvements, please send an email to the author.<p>"
@@ -102,6 +102,7 @@ In no event shall the author be liable for any damages resulting from its usage<
 the <a href=\"http://www.usno.navy.mil/USNO/astrometry/optical-IR-prod/wds/WDS\">Washington Double Star Catalog</a> \
 and the <a href=\"http://www.usno.navy.mil/USNO/astrometry/optical-IR-prod/wds/ORB6\">Sixth Orbit Catalog</a>, \
 both maintained at the <a href=http://www.usno.navy.mil/USNO>U.S. Naval Observatory</a>");
+// TO FIX: should read version number from ../VERSION
 
 void MainWindow::about()
 {

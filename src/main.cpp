@@ -153,10 +153,9 @@ bool launchCdcProcess(WdsPickConfig *config)
 {
   bool proc_started;
 #if defined(Q_OS_MAC)
-  //QString appPath = "/Applications/Cartes du Ciel/skychart.app";
   QString appPath = config->cdc_path;
   proc_started = QDesktopServices::openUrl(QUrl::fromLocalFile(appPath));
-  // TO DO : add args
+  // TO DO : add args ?
 #else 
   QString program = config->cdc_path;
   QProcess *process = new QProcess(NULL);

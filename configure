@@ -27,7 +27,7 @@ echo "PLATFORM=$platform" >> config
 case "$platform" in
   macos)
     echo "MAKE=make" >> config
-    echo "QMAKE=/Developer/Qt5.2.1/5.2.1/clang_64/bin/qmake" >> config
+    echo "QMAKE=/Developer/Qt5.8/5.8/clang_64/bin/qmake" >> config
     echo "QMAKE_SPEC=macx-clang" >> config;;
   win32-mingw)
     echo "MAKE=C:/Qt/Qt5.8.0/Tools/mingw530_32/bin/mingw32-make" >> config
