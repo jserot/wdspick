@@ -25,10 +25,13 @@ DOCUMENTATION
 -------------
 
 The project web page (including links for downloading the tools) is 
-[here](http://www.astrosurf.com/legalet/Astro/WdsPIck.html)
+[here](http://www.astrosurf.com/legalet/Astro/WdsPIck.html).
 
 The user manual can be found
-[here](http://www.astrosurf.com/legalet/software/wdspick/WdsPick-manual.pdf)
+[here](http://www.astrosurf.com/legalet/software/wdspick/WdsPick-manual.pdf).
+
+A short paper describing **WdsPick** was published in the [Journal of Double Star
+Observations](http://jdso.org), vol 12(6), pp 535--540.
 
 INSTALLATION
 ------------

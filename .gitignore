@@ -10,6 +10,7 @@ src/debug/
 src/wdspick.app/
 src/Makefile
 src/Makefile.*
+doc/papers/
 icon.graffle/
 *.ico
 *.bmp
