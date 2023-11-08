@@ -132,16 +132,21 @@ void WdsExtractor::writeSpecFile(const QString &fname)
   QFile f(fname);
   if ( f.open(QIODevice::ReadWrite | QIODevice::Text | QIODevice::Truncate) ) {
     QTextStream os(&f);
-    QMapIterator<QString,Field> i(fields);
-    while (i.hasNext()) {
-      i.next();
-      if ( i.value().checked->isChecked() ) 
-        os << i.key() << "; "<<  i.value().entry->text() << endl;
-      }
+    writeSpecs(os);
     f.close();
     }
   else
-    QMessageBox::critical(this, "WDS Picker:", tr("Cannot write spec file %1!\n").arg(fname));
+    QMessageBox::critical(this, "WdsPick:", tr("Cannot write spec file %1!\n").arg(fname));
+}
+
+void WdsExtractor::writeSpecs(QTextStream& os)
+{
+  QMapIterator<QString,Field> i(fields);
+  while (i.hasNext()) {
+    i.next();
+    if ( i.value().checked->isChecked() ) 
+      os << i.key() << "; "<<  i.value().entry->text() << endl;
+  }
 }
 
 void WdsExtractor::readSpecFile(const QString &fname)
@@ -162,7 +167,7 @@ void WdsExtractor::readSpecFile(const QString &fname)
     f.close();
   }
   else
-    QMessageBox::critical(this, "WDS Picker:", tr("Cannot read config file %1!\n").arg(fname));
+    QMessageBox::critical(this, "WdsPick:", tr("Cannot read config file %1!\n").arg(fname));
 }
 
 void WdsExtractor::writeSelection(const QString &fname)
@@ -170,15 +175,18 @@ void WdsExtractor::writeSelection(const QString &fname)
   QFile f(fname);
   if ( f.open(QIODevice::ReadWrite | QIODevice::Text | QIODevice::Truncate) ) {
     QTextStream os(&f);
+    os << "# EXTRACTION CRITERIA" << endl;;
+    writeSpecs(os);
+    os << "# EXTRACTED TARGETS " << endl;;
     os << "WDS; DISC; COMP; LAST_OBS; NB_OBS; PA; SEP; M1; M2; RA; DEC; NOTES; SPTYPE; HAS_ORB" << endl;
     for (int i = 0; i < selection.size(); ++i) {
       selection.at(i).write_csv(os);
       }
     f.close();
-    QMessageBox::information(this, "WDS Picker:", tr("Wrote %1 entries in file %2\n").arg(selection.size()).arg(fname));
+    QMessageBox::information(this, "WdsPick:", tr("Wrote %1 entries in file %2\n").arg(selection.size()).arg(fname));
     }
   else
-    QMessageBox::critical(this, "WDS Picker:", tr("Cannot write file %1!\n").arg(fname));
+    QMessageBox::critical(this, "WdsPick:", tr("Cannot write file %1!\n").arg(fname));
 }
 
 void WdsExtractor::quit()

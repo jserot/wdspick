@@ -50,6 +50,7 @@ public slots:
   void add_field(QMap<QString,Field> &fields, QString lbl, int width, QGridLayout *layout, int ncols, bool first_in_layout = false);
   QVector<WdsEntry> selection;
   WdsPickContext *context;
+  void writeSpecs(QTextStream& os);
   void read_wds_file(WdsPickContext *ctx, WdsFilter &filt, QVector<WdsEntry> &sel);
   QStatusBar *status_bar;
 };

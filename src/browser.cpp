@@ -46,7 +46,7 @@ WdsBrowser::WdsBrowser(WdsPickConfig *config, WdsPickContext *context, QWidget *
   QString log_file_name = config->rsrc_path + config->log_file_prefix + date.toString("yyyy-MM-dd") + ".log";
   logFile = new QFile(log_file_name);
   if ( !logFile->open(QIODevice::Append | QIODevice::Text) )
-    QMessageBox::critical(this, "WDS Picker:", tr("Cannot open log file %1!\n").arg(log_file_name));
+    QMessageBox::critical(this, "WdsPick:", tr("Cannot open log file %1!\n").arg(log_file_name));
   logStream.setDevice(logFile); 
   QVBoxLayout* layout = new QVBoxLayout;
   layout->addWidget(createTimeGroup());
@@ -404,7 +404,7 @@ void WdsBrowser::connect_cdc()
     cdcClient->connect();
     }
   else
-    QMessageBox::critical(this, "WDS Picker:", tr("cannot open TCP connection to Cartes du Ciel"));
+    QMessageBox::critical(this, "WdsPick:", tr("cannot open TCP connection to Cartes du Ciel"));
 }
 
 void WdsBrowser::disconnect_cdc()
