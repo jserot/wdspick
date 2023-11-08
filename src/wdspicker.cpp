@@ -63,6 +63,12 @@ void WdsPicker::writeSpecFile(const QString &fileName)
   //status_bar->showMessage(tr("Spec file saved"));
 }
 
+void WdsPicker::writeExtracted(const QString &fileName)
+{
+  wdsExtractor->writeSelection(fileName);
+  //status_bar->showMessage(tr("Selection saved"));
+}
+
 void WdsPicker::extract()
 {
   wdsExtractor->extract();

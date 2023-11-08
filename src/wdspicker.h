@@ -33,6 +33,7 @@ public:
 
   void readSpecFile(const QString &fileName);
   void writeSpecFile(const QString &fileName);
+  void writeExtracted(const QString &fileName);
   void extract();
   void quit();
 

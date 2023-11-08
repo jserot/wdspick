@@ -83,6 +83,18 @@ void MainWindow::extract()
   wdsPicker->extract();
 }
 
+void MainWindow::selectionExtracted()
+{
+  saveExtractedAsAct->setEnabled(true); // TODO: enable only if selection is not empty ?
+}
+
+void MainWindow::saveExtraction()
+{
+    QString fileName = QFileDialog::getSaveFileName(this);
+    if (!fileName.isEmpty())
+      wdsPicker->writeExtracted(fileName);
+}
+
 static QString aboutTxt = QMessageBox::tr(
 "<center><h3>WdsPick version 2.2</h3></center>"
 "<center>(c) Jocelyn Serot, 2018-now</center>"
@@ -116,10 +128,17 @@ void MainWindow::createActions()
     //openAct->setStatusTip(tr("Open a specification file"));
     connect(openAct, SIGNAL(triggered()), this, SLOT(openSpecFile()));
 
-    saveAsAct = new QAction(tr("&Save Spec File..."), this);
-    saveAsAct->setShortcuts(QKeySequence::Save);
-    //saveAsAct->setStatusTip(tr("Save the current specifications in a file"));
-    connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveSpecFile()));
+    saveSpecAsAct = new QAction(tr("&Save Spec File..."), this);
+    saveSpecAsAct->setShortcuts(QKeySequence::Save);
+    //saveSpecAsAct->setStatusTip(tr("Save the current specifications in a file"));
+    connect(saveSpecAsAct, SIGNAL(triggered()), this, SLOT(saveSpecFile()));
+
+    saveExtractedAsAct = new QAction(tr("&Save Extraction ..."), this);
+    saveExtractedAsAct->setShortcuts(QKeySequence::SaveAs);
+    //saveExtractedAsAct->setStatusTip(tr("Save the extracted list of targets in a file"));
+    connect(saveExtractedAsAct, SIGNAL(triggered()), this, SLOT(saveExtraction()));
+    saveExtractedAsAct->setEnabled(false); // Do not enable before an extraction is performed
+    connect(wdsPicker->wdsExtractor, SIGNAL(extracted(QVector<WdsEntry>&)), this, SLOT(selectionExtracted()));
 
     exitAct = new QAction(tr("Q&uit"), this);
     exitAct->setShortcuts(QKeySequence::Quit);
@@ -145,7 +164,8 @@ void MainWindow::createMenus()
 {
     fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->addAction(openAct);
-    fileMenu->addAction(saveAsAct);
+    fileMenu->addAction(saveSpecAsAct);
+    fileMenu->addAction(saveExtractedAsAct);
     fileMenu->addSeparator();
     fileMenu->addAction(exitAct);
 

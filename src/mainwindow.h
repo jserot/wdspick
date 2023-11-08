@@ -36,6 +36,8 @@ protected:
 private slots:
     void openSpecFile();
     void saveSpecFile();
+    void selectionExtracted();
+    void saveExtraction();
     void extract();
     void about();
 
@@ -48,6 +50,7 @@ private:
     //void writeSettings();
     void readSpecFile(const QString &fileName);
     void writeSpecFile(const QString &fileName);
+    void writeExtracted(const QString &fileName);
     bool maybeSave();
 
     WdsPicker *wdsPicker;
@@ -57,7 +60,8 @@ private:
     QMenu *actionMenu;
     QMenu *helpMenu;
     QAction *openAct;
-    QAction *saveAsAct;
+    QAction *saveSpecAsAct;
+    QAction *saveExtractedAsAct;
     QAction *exitAct;
     QAction *extractAct;
     QAction *aboutAct;

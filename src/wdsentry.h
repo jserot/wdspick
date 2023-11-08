@@ -38,6 +38,8 @@ public:
 
   QString toString() const;
 
+  void write_csv(QTextStream& os) const;
+
   friend QTextStream& operator<<(QTextStream &, const WdsEntry &v);
 };
 

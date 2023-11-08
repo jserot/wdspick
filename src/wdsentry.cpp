@@ -54,3 +54,21 @@ QTextStream& operator<<(QTextStream& os, const WdsEntry &v)
   os << s;
   return os;
 }
+
+void WdsEntry::write_csv(QTextStream& os) const
+{
+  os << qPrintable(wds) << ";";
+  os << qPrintable(disc) << ";";
+  os << qPrintable(comp) << ";";
+  os << last_obs << ";";
+  os << nb_obs << ";";
+  os << pa << ";";
+  os << sep << ";";
+  os << m1 << ";";
+  os << m2 << ";";
+  os << qPrintable(ra.toString()) << ";";
+  os << qPrintable(dec.toString()) << ";";
+  os << qPrintable(notes) << ";";
+  os << qPrintable(sptype) << ";";
+  os << has_orb << endl;
+}

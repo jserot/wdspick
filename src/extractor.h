@@ -35,6 +35,7 @@ public:
   WdsExtractor(WdsPickContext *context, QStatusBar *status_bar, QWidget *parent = 0);
   void readSpecFile(const QString &filename);
   void writeSpecFile(const QString &filename);
+  void writeSelection(const QString &filename);
 
 signals:
   void extracted(QVector<WdsEntry> &);
