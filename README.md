@@ -66,7 +66,7 @@ Optionally
 
    where `<prefix>` is the root of the target install tree (default:  `/usr`)
 
-4. Build : `make`
+4. Build : `cd src; qmake; make`
 
 5. Edit `dist/linux/config.default` to reflect your local setup. In particular
    - path to the `skychart`  application
