@@ -40,10 +40,10 @@ OrbEntry::OrbEntry(const QString line)
 QString OrbEntry::toString() const
 {
   QString ss;
-  ss.sprintf("%s %s%s grade=%d ref=%s", qPrintable(wds), qPrintable(disc), qPrintable(comp), grade, qPrintable(ref));
+  ss.asprintf("%s %s%s grade=%d ref=%s", qPrintable(wds), qPrintable(disc), qPrintable(comp), grade, qPrintable(ref));
   for ( int i=0; i<5; i++) 
-    ss.sprintf(" sep[%d]=%5.2f pa[%d]=%5.1f", i+1, pa[i], i+1, sep[i]);
-  ss.sprintf("notes=%s", qPrintable(notes));
+    ss.asprintf(" sep[%d]=%5.2f pa[%d]=%5.1f", i+1, pa[i], i+1, sep[i]);
+  ss.asprintf("notes=%s", qPrintable(notes));
   return ss;
 }
 

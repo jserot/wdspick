@@ -43,7 +43,7 @@ WdsBrowser::WdsBrowser(WdsPickConfig *config, WdsPickContext *context, QWidget *
   obs_long = config->obs_long;
   obs_lat = config->obs_lat;
   QDate date = QDate::currentDate();
-  QString log_file_name = config->rsrc_path + config->log_file_prefix + date.toString("yyyy-MM-dd") + ".log";
+  QString log_file_name = config->app_dir + config->log_file_prefix + date.toString("yyyy-MM-dd") + ".log";
   logFile = new QFile(log_file_name);
   if ( !logFile->open(QIODevice::Append | QIODevice::Text) )
     QMessageBox::critical(this, "WdsPick:", tr("Cannot open log file %1!\n").arg(log_file_name));
@@ -109,7 +109,7 @@ void WdsBrowser::update_time(void)
 int compute_field_width(const char *templ)
 {
   QFontMetrics metrics(QApplication::font());
-  return metrics.width(templ);
+  return metrics.boundingRect(templ).width();
 }
 
 QGroupBox *WdsBrowser::createTimeGroup()

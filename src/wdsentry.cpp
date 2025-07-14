@@ -37,14 +37,14 @@ WdsEntry::WdsEntry(const QString line)
 QString WdsEntry::toString() const
 {
   QString ss;
-  ss.sprintf("%s %s%s nobs=%4d last=%d m1=%4.1f m2=%4.1f sep=%5.2f pa=%5.1f ra=%s dec=%s sp=%s notes=%s",
+  ss.asprintf("%s %s%s nobs=%4d last=%d m1=%4.1f m2=%4.1f sep=%5.2f pa=%5.1f ra=%s dec=%s sp=%s notes=%s",
              qPrintable(wds), qPrintable(disc), qPrintable(comp),
              nb_obs, last_obs,
              m1, m2, sep, pa, 
              qPrintable(ra.toString()), qPrintable(dec.toString()), qPrintable(sptype), qPrintable(notes));
   if ( has_orb ) 
-    ss.sprintf(" ogrd=%d oref=%s osep[1]=%5.2f opa[1]=%5.1f", orb.grade, qPrintable(orb.ref), orb.sep[1], orb.pa[1]);
-  ss.sprintf("\n");
+    ss.asprintf(" ogrd=%d oref=%s osep[1]=%5.2f opa[1]=%5.1f", orb.grade, qPrintable(orb.ref), orb.sep[1], orb.pa[1]);
+  ss.asprintf("\n");
   return ss;
 }
 
@@ -70,5 +70,5 @@ void WdsEntry::write_csv(QTextStream& os) const
   os << qPrintable(dec.toString()) << ";";
   os << qPrintable(notes) << ";";
   os << qPrintable(sptype) << ";";
-  os << has_orb << endl;
+  os << has_orb << Qt::endl;
 }

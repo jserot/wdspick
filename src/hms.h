@@ -13,6 +13,7 @@
 #define _hms_h
 
 #include <QTextStream>
+#include <QString>
 
 class Hms
 {

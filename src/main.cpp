@@ -14,6 +14,7 @@
 #include <QMessageBox>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QDir>
 
 #include "tcpclient.h"
 #include "mainwindow.h"
@@ -28,23 +29,11 @@ bool launchCdcProcess(WdsPickConfig *config);
 
 int main(int argc, char *argv[])
 {
-  //Q_INIT_RESOURCE(wdspick);
   QApplication app(argc, argv);
   app.setApplicationName("WdsPick");
-#if defined(Q_OS_MAC)
-  QString rsrc_path = app.applicationDirPath() + "/../Resources/";
-#else
-  QString rsrc_path = "./";
-#endif
-  QFile iniFile(rsrc_path+"wdspick.ini");
-  QFile wdsFile;
-  WdsPickConfig *config;
-  if ( iniFile.exists()  )
-    config = new WdsPickConfig(&iniFile);
-  else 
-    config = new WdsPickConfig(); // No .ini file found. Reverting to defaults values for various file names");
-  config->rsrc_path = rsrc_path;
-  config->dump("config.log");
+  QString app_dirname = QDir::homePath() + "/.wdspick/";
+  WdsPickConfig *config = new WdsPickConfig(app_dirname);
+  config->dump(app_dirname+"config.log");
   WdsPickContext *context = new WdsPickContext;
   openWdsFile(config, context); 
   readOrbFile(config, context);
@@ -62,7 +51,7 @@ int openWdsFile(WdsPickConfig *config, WdsPickContext *ctx)
 {
   int k=0;
   QFile* file = new QFile;
-  file->setFileName(config->rsrc_path+config->wds_file);
+  file->setFileName(config->wds_file);
   // We don't read the file in memory now. Only count lines. Loading will only occur after filtering
   if ( file->open(QIODevice::ReadOnly) ) {
     QTextStream is(file);
@@ -83,7 +72,7 @@ int readOrbFile(WdsPickConfig *config, WdsPickContext *ctx)
   int k = 0;
   QFile file;
   QString line;
-  file.setFileName(config->rsrc_path+config->orb_file);
+  file.setFileName(config->orb_file);
   if ( file.open(QIODevice::ReadOnly) ) {
     QTextStream is(&file);
     while ( !is.atEnd() ) {
@@ -105,7 +94,7 @@ int readMesFile(WdsPickConfig *config, WdsPickContext *ctx)
   QString id, info;
   QStringList l, infos;
   int k = 0;
-  file.setFileName(config->rsrc_path+config->mes_file);
+  file.setFileName(config->mes_file);
   if ( file.open(QIODevice::ReadOnly) ) {
     QTextStream is(&file);
     while ( !is.atEnd() ) {
@@ -132,7 +121,7 @@ int readAdcFile(WdsPickConfig *config, WdsPickContext *ctx)
   QFile file;
   QStringList l;
   int k = 0;
-  file.setFileName(config->rsrc_path+config->adc_file);
+  file.setFileName(config->adc_file);
   if ( file.open(QIODevice::ReadOnly) ) {
     QTextStream is(&file);
     while ( !is.atEnd() ) {

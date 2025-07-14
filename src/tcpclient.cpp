@@ -69,7 +69,7 @@ void TcpClient::sendData(const QString &msg)
   QTextStream out(tcpSocket);
   QString data = msg + "\r\n";
 
-  out << data << endl;
+  out << data << Qt::endl;
 }
 
 void TcpClient::set_connected()

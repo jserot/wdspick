@@ -33,7 +33,7 @@ WdsExtractor::WdsExtractor(WdsPickContext *context, QStatusBar *status_bar, QWid
   : QWidget(parent), context(context), status_bar(status_bar)
 {
   QFontMetrics metrics(QApplication::font());
-  int default_field_width = metrics.width("88888");
+  int default_field_width = metrics.boundingRect("88888").width();
 
   QGridLayout *layout = new QGridLayout;
   //layout->setSpacing(0);
@@ -145,7 +145,7 @@ void WdsExtractor::writeSpecs(QTextStream& os)
   while (i.hasNext()) {
     i.next();
     if ( i.value().checked->isChecked() ) 
-      os << i.key() << "; "<<  i.value().entry->text() << endl;
+      os << i.key() << "; "<<  i.value().entry->text() << Qt::endl;
   }
 }
 
@@ -175,10 +175,10 @@ void WdsExtractor::writeSelection(const QString &fname)
   QFile f(fname);
   if ( f.open(QIODevice::ReadWrite | QIODevice::Text | QIODevice::Truncate) ) {
     QTextStream os(&f);
-    os << "# EXTRACTION CRITERIA" << endl;;
+    os << "# EXTRACTION CRITERIA" << Qt::endl;;
     writeSpecs(os);
-    os << "# EXTRACTED TARGETS " << endl;;
-    os << "WDS; DISC; COMP; LAST_OBS; NB_OBS; PA; SEP; M1; M2; RA; DEC; NOTES; SPTYPE; HAS_ORB" << endl;
+    os << "# EXTRACTED TARGETS " << Qt::endl;;
+    os << "WDS; DISC; COMP; LAST_OBS; NB_OBS; PA; SEP; M1; M2; RA; DEC; NOTES; SPTYPE; HAS_ORB" << Qt::endl;
     for (int i = 0; i < selection.size(); ++i) {
       selection.at(i).write_csv(os);
       }

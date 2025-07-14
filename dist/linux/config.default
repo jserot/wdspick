@@ -1,0 +1,10 @@
+wds_cat_index = 5
+cdc_path = /usr/bin/skychart
+cdc_tcp_addr = 127.0.0.1
+cdc_tcp_port = 3292
+mes_file = mesures.csv
+log_file_prefix = wdspick_
+cdc_args = 
+launch_cdc_on_start = no
+obs_long = -3.0760
+obs_lat = 45.7956

@@ -1,4 +1,5 @@
 platform=macos
+prefix=/usr
 configure_options="$*"
 
 while : ; do
@@ -6,11 +7,14 @@ while : ; do
     "") break;;
     -platform|--platform)
         platform=$2; shift;;
+    -prefix|--prefix)
+        prefix=$2; shift;;
     -help|--help)
         cat <<EOF
 Usage: configure [options]
 Options: [defaults in brackets after descriptions]
   --platform NAME         target platform (linux, macos, win32-mingw, win32-cygw) [default: macos])
+  --prefix PATH           target install dir (for Linux only; install will be performed in <prefix>/bin and <prefix>/share) [default: /usr])
   --help                  print this message
 EOF
 	exit 0;;
@@ -25,6 +29,12 @@ echo "$version" >> config
 echo "PLATFORM=$platform" >> config
 
 case "$platform" in
+  linux)
+    echo "PREFIX=$prefix" >> config
+    echo "MAKE=make" >> config
+# If Qt6 has been installed using the standard Qt installer, default qmake should be ok
+#    echo "QMAKE_SPEC=macx-clang" >> config;;
+    echo "QMAKE=qmake" >> config;;
   macos)
     echo "MAKE=make" >> config
     echo "QMAKE=/Developer/Qt5.8/5.8/clang_64/bin/qmake" >> config

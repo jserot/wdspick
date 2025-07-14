@@ -18,7 +18,7 @@ QString WdsPickContext::toString() const
   char lg[16], lt[16];
   sprintf(lt, "%2.1f%c", fabs(obs_lat), obs_lat>=0?'N':'S');
   sprintf(lg, "%2.1f%c", fabs(obs_long), obs_long>=0?'W':'E');
-  ss.sprintf("Obs:%s/%s     WDS:%d Orb:%d Mes:%d ADC:%s",
+  ss.asprintf("Obs:%s/%s     WDS:%d Orb:%d Mes:%d ADC:%s",
              lt, lg,
              wds_count,
              orbits.count(),

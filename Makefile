@@ -33,6 +33,18 @@ ifeq ($(PLATFORM), win32-mingw)
 endif
 endif
 
+install:
+ifeq ($(PLATFORM), linux)
+	mkdir -p $(PREFIX)/bin
+	cp src/wdspick $(PREFIX)/bin
+	mkdir -p $(PREFIX)/share/wdspick
+	cp doc/um/*.pdf $(PREFIX)/share/wdspick
+	mkdir -p $(HOME)/.wdspick
+	cp dist/linux/config.default $(HOME)/.wdspick/config
+	mkdir -p $(HOME)/.wdspick/data
+	cp data/*.txt $(HOME)/.wdspick/data
+endif
+
 MACOS_DIST=/tmp/wdspick
 
 macos-dist:
