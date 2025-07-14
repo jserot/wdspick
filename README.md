@@ -58,7 +58,7 @@ Optionally
 
 ### Procedure
 
-1. Clone the source directory : `git clone ...`
+1. Clone the `linux` branch from the source directory : `git clone -b linux https://github.com/jserot/wdspick.git`
 
 2. Go to the top directory : `cd wdspick`
 
