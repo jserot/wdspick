@@ -109,7 +109,7 @@ void WdsBrowser::update_time(void)
 int compute_field_width(const char *templ)
 {
   QFontMetrics metrics(QApplication::font());
-  return metrics.width(templ);
+  return metrics.boundingRect(templ).width();
 }
 
 QGroupBox *WdsBrowser::createTimeGroup()
@@ -303,9 +303,10 @@ void WdsBrowser::prevSel()
 
 void WdsBrowser::gotoSel()
 {
-  QString target = selection[current_sel].disc;
+  QString target = selection[current_sel].disc + selection[current_sel].comp;
+  // FIX vers 2.3, 2026-09-28. See https://groups.io/g/skychart/topic/problem_with_the_search_in/120828181
   QString cmd = "find 5 " + target.remove(QChar(' '));
-  //qDebug() << cmd;
+  // qDebug() << cmd;
   if ( cdcClient ) {
     cdcClient->sendData(cmd);
     cdcClient->sendData("redraw");

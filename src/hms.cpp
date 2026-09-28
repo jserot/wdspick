@@ -10,6 +10,7 @@
 /**********************************************************************/
 
 #include "hms.h"
+#include <QString>
 
 Hms::Hms(QString ss)
 {               
@@ -29,7 +30,7 @@ Hms::Hms(QString ss)
 QString Hms::toString() const
 {               
   QString ss;
-  ss.sprintf("%0+3d%02d%02d", h, m, s);
+  ss.asprintf("%0+3d%02d%02d", h, m, s);
   return ss;
 }
 

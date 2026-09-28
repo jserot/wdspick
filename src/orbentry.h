@@ -13,6 +13,7 @@
 #define _orb_entry
 
 #include <QTextStream>
+#include <QString>
 
 class OrbEntry {
 public:
